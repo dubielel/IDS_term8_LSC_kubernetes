@@ -219,3 +219,18 @@ kubectl apply -f job.yaml
 After setting up everything and going to the website hosting my cluster, I was able to see the content:
 
 ![alt text](image-12.png)
+
+## Architecture diagram and description
+
+![alt text](image-13.png)
+
+1. Amazon EKS Cluster – the managed Kubernetes cluster where all components run.
+2. Helm used to install:
+  * NFS Server
+  * NFS Provisioner configured with StorageClass that allows dynamic provisioning of persistent volumes (PVs) via persistent volume claims (PVCs).
+3. Storage Class & PVC with storageClassName: nfs-client-provisioner – automatically binds to a dynamically created NFS Persistent Volume.
+4. Deployment with Pod as simple HTTP Server (nginx)
+  * Mounts the NFS volume using the PVC.
+  * Serves web content from the mounted directory.
+5. Service – exposes the HTTP server pod via ClusterIP, NodePort, or LoadBalancer.
+6. Job – one-time Kubernetes Job that also mounts the same PVC and it copies sample web content to the shared NFS volume.
