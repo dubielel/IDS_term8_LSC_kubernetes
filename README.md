@@ -1,4 +1,12 @@
-# Kubernetes using AWS EKS
+# Large Scale Computing
+
+## Lab 6 - Kubernetes using AWS EKS
+
+### Miłosz Dubiel, Informatyka -- Data Science
+
+### gr. 8, czw. 11:30
+
+[GitHub repository](https://github.com/dubielel/IDS_term8_LSC_kubernetes)
 
 First of all, I've set up AWS EKS cluster named lab06 using AWS's web interface:
 
